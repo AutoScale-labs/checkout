@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn AI Automation — 60,000+ Impressions in 2 Weeks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080808;
+      --bg2:      #0F0F0F;
+      --bg3:      #141414;
+      --surface:  #181818;
+      --border:   rgba(255,255,255,0.07);
+      --border2:  rgba(255,255,255,0.11);
+      --ink:      #F5F5F5;
+      --muted:    rgba(245,245,245,0.5);
+      --faint:    rgba(245,245,245,0.22);
+      --green:    #00E676;
+      --green-bg: rgba(0,230,118,0.08);
+      --green-glow: rgba(0,230,118,0.2);
+      --sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* grid bg */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,230,118,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,230,118,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* top glow */
+    .top-glow {
+      position: fixed; top: -300px; left: 50%;
+      transform: translateX(-50%);
+      width: 1000px; height: 600px;
+      background: radial-gradient(ellipse, rgba(0,230,118,0.07) 0%, transparent 65%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: relative; z-index: 10;
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.03em; }
+    .nav-logo b { color: var(--green); font-weight: 700; }
+    .nav-pill {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--green);
+      background: var(--green-bg); border: 1px solid rgba(0,230,118,0.18);
+      padding: 5px 12px; border-radius: 20px;
+    }
+    .live-dot {
+      width: 6px; height: 6px; background: var(--green); border-radius: 50%;
+      animation: blink 1.8s ease infinite;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 100px 48px 64px;
+      text-align: center;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6.5vw, 72px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .g { color: var(--green); }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 560px; margin: 0 auto 16px;
+    }
+    .hero-sub b { color: var(--ink); font-weight: 500; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center;
+      padding: 0 48px 72px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .stats-inner {
+      display: flex;
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .stat {
+      padding: 28px 52px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-n {
+      font-size: 38px; font-weight: 900;
+      color: var(--green); letter-spacing: -0.03em;
+      line-height: 1; margin-bottom: 6px;
+    }
+    .stat-l {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--faint);
+    }
+
+    /* ── PROOF BLOCK ── */
+    .proof {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 0 48px 88px;
+      animation: fadeUp 0.7s 0.18s ease both;
+    }
+    .proof-label {
+      text-align: center;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--faint);
+      margin-bottom: 20px;
+    }
+    .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .proof-card {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 14px; overflow: hidden;
+      position: relative;
+    }
+    .proof-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.55));
+      pointer-events: none;
+    }
+    .proof-card img { width: 100%; display: block; }
+    .proof-tag {
+      position: absolute; bottom: 14px; left: 14px; z-index: 2;
+      background: var(--green); color: #000;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.04em;
+      padding: 5px 11px; border-radius: 5px;
+    }
+
+    /* ── DIVIDER ── */
+    hr { border: none; border-top: 1px solid var(--border); }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 88px 48px;
+    }
+    .sec-kicker {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 14px;
+    }
+    .sec-title {
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.05; margin-bottom: 14px;
+    }
+    .sec-sub {
+      font-size: 15px; font-weight: 300;
+      color: var(--muted); line-height: 1.65;
+      max-width: 500px; margin-bottom: 52px;
+    }
+
+    .steps {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; background: var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .step {
+      background: var(--bg2); padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .step:hover { background: var(--bg3); }
+    .step-num {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.2em;
+      color: var(--green); text-transform: uppercase; margin-bottom: 18px;
+    }
+    .step-ico { font-size: 30px; margin-bottom: 14px; display: block; }
+    .step h3 {
+      font-size: 16px; font-weight: 700;
+      letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.25;
+    }
+    .step p { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+    /* ── INCLUDED ── */
+    .included {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 0 48px 88px;
+    }
+    .inc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-top: 48px;
+    }
+    .inc-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 24px 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .inc-item:hover {
+      border-color: rgba(0,230,118,0.25);
+      background: var(--bg3);
+    }
+    .inc-ico { font-size: 22px; margin-bottom: 12px; display: block; }
+    .inc-name { font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+    .inc-desc { font-size: 12px; font-weight: 300; color: var(--faint); line-height: 1.6; }
+
+    /* ── CHECKOUT ── */
+    .checkout {
+      position: relative; z-index: 1;
+      max-width: 520px; margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+    .checkout-card {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 0 80px rgba(0,230,118,0.05);
+    }
+    .co-head {
+      padding: 32px 36px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .co-kicker {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 10px;
+    }
+    .co-title {
+      font-size: 22px; font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 6px;
+    }
+    .co-tagline {
+      font-size: 13px; font-weight: 300;
+      color: var(--muted); line-height: 1.55;
+    }
+    .co-price {
+      display: flex; align-items: baseline; gap: 5px; margin-top: 20px;
+    }
+    .co-price .cur { font-size: 20px; font-weight: 400; color: var(--muted); }
+    .co-price .amt {
+      font-size: 48px; font-weight: 900; color: var(--green);
+      letter-spacing: -0.04em; line-height: 1;
+    }
+    .co-price .note { font-size: 12px; font-weight: 300; color: var(--faint); }
+
+    .co-body { padding: 32px 36px; }
+
+    .fg { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+    label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--faint);
+    }
+    input {
+      font-family: var(--sans);
+      font-size: 15px; font-weight: 300;
+      color: var(--ink); background: var(--bg2);
+      border: 1px solid var(--border2); border-radius: 8px;
+      padding: 14px 16px; outline: none; width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input::placeholder { color: var(--faint); }
+    input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0,230,118,0.09);
+    }
+    input.err { border-color: #FF5252; }
+    .ferr { font-size: 11px; color: #FF5252; display: none; }
+    .ferr.show { display: block; }
+
+    .pay-btn {
+      width: 100%; margin-top: 8px;
+      padding: 18px 24px;
+      background: var(--green); color: #000;
+      font-family: var(--sans);
+      font-size: 14px; font-weight: 800; letter-spacing: 0.03em;
+      border: none; border-radius: 8px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 0 28px rgba(0,230,118,0.28);
+    }
+    .pay-btn:hover:not(:disabled) {
+      opacity: 0.92;
+      box-shadow: 0 0 44px rgba(0,230,118,0.42);
+    }
+    .pay-btn:active:not(:disabled) { transform: scale(0.985); }
+    .pay-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .spin {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(0,0,0,0.2); border-top-color: #000;
+      border-radius: 50%; animation: spin 0.65s linear infinite; display: none;
+    }
+    .pay-btn.loading .btxt { display: none; }
+    .pay-btn.loading .spin { display: block; }
+
+    .log-st {
+      font-size: 11px; font-weight: 300; color: var(--faint);
+      text-align: center; margin-top: 10px; min-height: 16px;
+    }
+    .log-st.warn { color: #FF9800; }
+
+    .co-foot {
+      padding: 20px 36px 28px;
+      border-top: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .sec-row {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      font-size: 11px; font-weight: 300; color: var(--faint);
+    }
+    .sup-line {
+      text-align: center; font-size: 12px;
+      font-weight: 300; color: var(--faint);
+    }
+    .sup-line a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    .sup-line a:hover { color: var(--ink); }
+
+    /* ── ANIM ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 680px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 64px 20px 48px; }
+      .stats-bar { padding: 0 20px 56px; }
+      .stats-inner { flex-direction: column; width: 100%; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 22px 32px; }
+      .stat:last-child { border-bottom: none; }
+      .proof { padding: 0 20px 64px; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .how { padding: 64px 20px; }
+      .steps { grid-template-columns: 1fr; }
+      .included { padding: 0 20px 64px; }
+      .inc-grid { grid-template-columns: 1fr 1fr; }
+      .checkout { padding: 0 16px 80px; }
+      .co-head, .co-body, .co-foot { padding-left: 24px; padding-right: 24px; }
+    }
+  </style>
+
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    
+</head>
+<body>
+<div class="top-glow"></div>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">LinkedIn <b>AI</b> Autopilot</span>
+  <div class="nav-pill"><span class="live-dot"></span> Live</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kicker">Real data · Real screenshots · No BS</div>
+  <h1>
+    This is exactly how I got<br>
+    <span class="g">60,000+ impressions</span><br>
+    in 2 weeks on LinkedIn.
+  </h1>
+  <p class="hero-sub">
+    I didn't write a single post.<br>
+    <b>An AI did everything. Every day. On autopilot.</b>
+  </p>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-n">64,728</div>
+      <div class="stat-l">Total Impressions</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">2 Weeks</div>
+      <div class="stat-l">Time to Grow</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">0</div>
+      <div class="stat-l">Posts Written Manually</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">100%</div>
+      <div class="stat-l">Autopilot</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROOF SCREENSHOTS -->
+<section class="proof">
+  <p class="proof-label">Actual dashboard screenshots — unedited</p>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <img src="screenshots/chart1.jpeg" alt="44,097 impressions — Jan 5 2026" />
+      <div class="proof-tag">44K in first sprint ↗</div>
+    </div>
+    <div class="proof-card">
+      <img src="screenshots/chart2.jpeg" alt="64,728 total impressions" />
+      <div class="proof-tag">64K+ total ↗</div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="sec-kicker">The workflow</p>
+  <h2 class="sec-title">Here's what the AI does.<br>Every. Single. Day.</h2>
+  <p class="sec-sub">Set it up once. It runs forever. No writers. No managers. No stress.</p>
+
+  <div class="steps">
+    <div class="step">
+      <p class="step-num">Step 01</p>
+      <span class="step-ico">🔍</span>
+      <h3>Finds your competitors' best posts</h3>
+      <p>The AI scans the top creators in your niche. It picks the posts that got the most reach and engagement. Not guessing — pure data, every time.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">Step 02</p>
+      <span class="step-ico">🧠</span>
+      <h3>Researches the topic deeply</h3>
+      <p>It doesn't just copy. It reads the topic. Finds the angles. Digs into what your specific audience actually cares about. Then it thinks before it writes.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">Step 03</p>
+      <span class="step-ico">✍️</span>
+      <h3>Rewrites in your voice</h3>
+      <p>You give it your tone, your style, your audience. It rewrites to sound exactly like you — not like a robot. People won't be able to tell the difference.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">Step 04</p>
+      <span class="step-ico">🎨</span>
+      <h3>Generates images for every post</h3>
+      <p>Posts with visuals get 3× more reach. The AI generates custom, on-brand images automatically. Beautiful. Relevant. Zero extra work from you.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">Step 05</p>
+      <span class="step-ico">📅</span>
+      <h3>Posts on a schedule. Every day.</h3>
+      <p>It queues everything and posts at the best times. While you sleep. While you work. While you do literally anything else. Completely hands-off.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">Result</p>
+      <span class="step-ico">📈</span>
+      <h3>You grow. Without lifting a finger.</h3>
+      <p>Consistent daily posting = LinkedIn loves you. More reach. More followers. More leads. Zero extra hours from you. That's the whole point.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- INCLUDED -->
+<section class="included">
+  <p class="sec-kicker">What's inside</p>
+  <h2 class="sec-title">Everything you need.<br>Nothing you don't.</h2>
+  <div class="inc-grid">
+    <div class="inc-item">
+      <span class="inc-ico">⚙️</span>
+      <p class="inc-name">n8n Workflow File</p>
+      <p class="inc-desc">The full automation. Import into n8n. Running in 10 minutes.</p>
+    </div>
+    <div class="inc-item">
+      <span class="inc-ico">📄</span>
+      <p class="inc-name">Setup Guide PDF</p>
+      <p class="inc-desc">Step-by-step. No tech skills needed. Just follow along.</p>
+    </div>
+    <div class="inc-item">
+      <span class="inc-ico">💬</span>
+      <p class="inc-name">Prompt Templates</p>
+      <p class="inc-desc">The exact prompts that make the AI write in your voice.</p>
+    </div>
+    <div class="inc-item">
+      <span class="inc-ico">🔑</span>
+      <p class="inc-name">API Setup Walkthrough</p>
+      <p class="inc-desc">Which keys you need. Where to get them. How to plug them in.</p>
+    </div>
+    <div class="inc-item">
+      <span class="inc-ico">♾️</span>
+      <p class="inc-name">Lifetime Access</p>
+      <p class="inc-desc">Buy once. Keep forever. Free updates when the workflow improves.</p>
+    </div>
+    <div class="inc-item">
+      <span class="inc-ico">📩</span>
+      <p class="inc-name">Email Support</p>
+      <p class="inc-desc">Stuck on setup? Email us. We'll get you running.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- CHECKOUT -->
+<section class="checkout" style="padding-top:80px;">
+  <div class="checkout-card">
+    <div class="co-head">
+      <p class="co-kicker">Get instant access</p>
+      <h2 class="co-title">LinkedIn AI Automation</h2>
+      <p class="co-tagline">One workflow. Daily posting. Thousands of impressions. On autopilot.</p>
+      <div class="co-price">
+        <span class="cur">₹</span>
+        <span class="amt">49</span>
+        <span class="note">one-time · instant download</span>
+      </div>
+    </div>
+
+    <div class="co-body">
+      <div class="fg">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your name" autocomplete="name" />
+        <span class="ferr" id="name-err">Please enter your name</span>
+      </div>
+      <div class="fg">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@email.com" autocomplete="email" />
+        <span class="ferr" id="email-err">Please enter a valid email</span>
+      </div>
+      <div class="fg">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="10-digit mobile number" maxlength="10" />
+        <span class="ferr" id="phone-err">Enter a valid 10-digit number</span>
+      </div>
+
+      <button class="pay-btn" id="pay-btn">
+        <span class="btxt">⚡ Pay & Get Instant Access</span>
+        <span class="spin"></span>
+      </button>
+      <p class="log-st" id="log-st"></p>
+    </div>
+
+    <div class="co-foot">
+      <div class="sec-row">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity="0.35">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Secured by Razorpay · 256-bit SSL
+      </div>
+      <div class="sup-line">
+        Questions? <a href="mailto:support@yourdomain.com">instantai.in@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_EXEC_URL';
+  const RAZORPAY_BASE   = 'https://rzp.io/l/YOUR_PAYMENT_LINK';
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function getUTM() {
+    const p = new URLSearchParams(window.location.search);
+    return {
+      utm_source:   p.get('utm_source')   || 'direct',
+      utm_medium:   p.get('utm_medium')   || '',
+      utm_campaign: p.get('utm_campaign') || ''
+    };
+  }
+
+  function validate() {
+    let ok = true;
+    ['name','email','phone'].forEach(id => {
+      document.getElementById(id).classList.remove('err');
+      document.getElementById(`${id}-err`).classList.remove('show');
+    });
+    const n = document.getElementById('name');
+    const e = document.getElementById('email');
+    const p = document.getElementById('phone');
+    if (!n.value.trim()) { n.classList.add('err'); document.getElementById('name-err').classList.add('show'); ok = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value.trim())) { e.classList.add('err'); document.getElementById('email-err').classList.add('show'); ok = false; }
+    if (!/^\d{10}$/.test(p.value.trim())) { p.classList.add('err'); document.getElementById('phone-err').classList.add('show'); ok = false; }
+    return ok;
+  }
+
+  async function logSheet(data, retries = 3) {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const r = await fetch(APPS_SCRIPT_URL, { method:'POST', body: JSON.stringify({action:'logLead',...data}) });
+        if (r.ok) return true;
+      } catch(e) {}
+      if (i < retries - 1) await sleep(800 * (i + 1));
+    }
+    return false;
+  }
+
+  document.getElementById('pay-btn').addEventListener('click', async () => {
+    if (!validate()) return;
+    const btn = document.getElementById('pay-btn');
+    const st  = document.getElementById('log-st');
+    const fd  = {
+      name:  document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      ...getUTM(), timestamp: new Date().toISOString()
+    };
+    btn.disabled = true; btn.classList.add('loading');
+    st.textContent = 'Saving details…';
+
+    const logged = await logSheet(fd);
+    if (!logged) {
+      const p = JSON.parse(localStorage.getItem('pendingLeads') || '[]');
+      p.push(fd); localStorage.setItem('pendingLeads', JSON.stringify(p));
+      st.classList.add('warn'); st.textContent = 'Could not save — proceeding.';
+    } else { st.textContent = ''; }
+
+    localStorage.setItem('buyerEmail', fd.email);
+    localStorage.setItem('buyerName',  fd.name);
+
+    if (typeof fbq !== 'undefined') {
+     fbq('track', 'Lead', { value: 49, currency: 'INR' });
+    }
+
+    const params = new URLSearchParams({
+      'prefill[name]':    fd.name,
+      'prefill[email]':   fd.email,
+      'prefill[contact]': fd.phone
+    });
+    window.location.href = `${RAZORPAY_BASE}?${params.toString()}`;
+  });
+
+  document.getElementById('phone').addEventListener('input', function() {
+    this.value = this.value.replace(/\D/g,'').slice(0,10);
+  });
+</script>
+</body>
+</html>
