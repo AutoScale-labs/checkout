@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,24 +10,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --bg:      #080808;
-      --bg2:     #0F0F0F;
-      --bg3:     #141414;
+      --bg: #080808;
+      --bg2: #0F0F0F;
+      --bg3: #141414;
       --surface: #181818;
-      --border:  rgba(255,255,255,0.07);
-      --border2: rgba(255,255,255,0.11);
-      --ink:     #F5F5F5;
-      --muted:   rgba(245,245,245,0.5);
-      --faint:   rgba(245,245,245,0.22);
-      --green:   #00E676;
-      --green-bg: rgba(0,230,118,0.08);
+      --border: rgba(255, 255, 255, 0.07);
+      --border2: rgba(255, 255, 255, 0.11);
+      --ink: #F5F5F5;
+      --muted: rgba(245, 245, 245, 0.5);
+      --faint: rgba(245, 245, 245, 0.22);
+      --green: #00E676;
+      --green-bg: rgba(0, 230, 118, 0.08);
       --sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: var(--sans);
@@ -43,258 +52,443 @@
 
     body::before {
       content: '';
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background-image:
-        linear-gradient(rgba(0,230,118,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,230,118,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(0, 230, 118, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 230, 118, 0.025) 1px, transparent 1px);
       background-size: 64px 64px;
-      pointer-events: none; z-index: 0;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .top-glow {
-      position: fixed; top: -300px; left: 50%; transform: translateX(-50%);
-      width: 1000px; height: 600px;
-      background: radial-gradient(ellipse, rgba(0,230,118,0.06) 0%, transparent 65%);
-      pointer-events: none; z-index: 0;
+      position: fixed;
+      top: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(0, 230, 118, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .wrap {
-      position: relative; z-index: 1;
-      width: 100%; max-width: 580px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 580px;
       animation: fadeUp 0.65s ease both;
     }
 
     /* ── SUCCESS BADGE ── */
     .success-badge {
-      display: flex; align-items: center; gap: 12px;
-      background: rgba(0,230,118,0.07);
-      border: 1px solid rgba(0,230,118,0.18);
-      border-radius: 10px; padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 230, 118, 0.07);
+      border: 1px solid rgba(0, 230, 118, 0.18);
+      border-radius: 10px;
+      padding: 14px 18px;
       margin-bottom: 40px;
     }
+
     .badge-check {
-      width: 24px; height: 24px; flex-shrink: 0;
-      background: var(--green); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .badge-check svg { display: block; }
-    .badge-text { font-size: 13px; font-weight: 500; color: var(--green); line-height: 1.4; }
-    .badge-text span { display: block; font-size: 11px; font-weight: 300; color: rgba(0,230,118,0.6); margin-top: 1px; }
+
+    .badge-check svg {
+      display: block;
+    }
+
+    .badge-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--green);
+      line-height: 1.4;
+    }
+
+    .badge-text span {
+      display: block;
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(0, 230, 118, 0.6);
+      margin-top: 1px;
+    }
 
     /* ── HEADER ── */
     .page-kicker {
-      font-size: 10px; font-weight: 800; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--faint); margin-bottom: 12px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 12px;
     }
+
     h1 {
       font-size: clamp(28px, 5vw, 42px);
-      font-weight: 900; letter-spacing: -0.03em;
-      line-height: 1.05; margin-bottom: 12px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 12px;
     }
-    h1 .g { color: var(--green); }
+
+    h1 .g {
+      color: var(--green);
+    }
+
     .greeting {
-      font-size: 15px; font-weight: 300;
-      color: var(--muted); line-height: 1.6; margin-bottom: 8px;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 8px;
     }
 
     /* ── EMAIL NOTE ── */
     .email-note {
-      display: flex; align-items: center; gap: 7px;
-      font-size: 12px; font-weight: 300; color: var(--faint);
-      margin-bottom: 40px; line-height: 1.5;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--faint);
+      margin-bottom: 40px;
+      line-height: 1.5;
     }
-    .email-note svg { flex-shrink: 0; opacity: 0.4; }
-    .email-note b { color: var(--muted); font-weight: 400; }
+
+    .email-note svg {
+      flex-shrink: 0;
+      opacity: 0.4;
+    }
+
+    .email-note b {
+      color: var(--muted);
+      font-weight: 400;
+    }
 
     /* ── DOWNLOAD CARD ── */
     .dl-card {
       background: var(--surface);
       border: 1px solid var(--border2);
-      border-radius: 14px; overflow: hidden;
+      border-radius: 14px;
+      overflow: hidden;
       margin-bottom: 20px;
     }
+
     .dl-head {
       padding: 22px 28px;
       border-bottom: 1px solid var(--border);
     }
-    .dl-head h2 { font-size: 16px; font-weight: 700; margin-bottom: 3px; }
-    .dl-head p  { font-size: 12px; font-weight: 300; color: var(--faint); }
 
-    .file-list { list-style: none; }
+    .dl-head h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .dl-head p {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--faint);
+    }
+
+    .file-list {
+      list-style: none;
+    }
+
     .file-item {
-      display: flex; align-items: center;
-      justify-content: space-between; gap: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
       padding: 18px 28px;
       border-bottom: 1px solid var(--border);
       transition: background 0.15s;
     }
-    .file-item:last-child { border-bottom: none; }
-    .file-item:hover { background: var(--bg3); }
 
-    .fi-info { display: flex; align-items: center; gap: 14px; }
+    .file-item:last-child {
+      border-bottom: none;
+    }
+
+    .file-item:hover {
+      background: var(--bg3);
+    }
+
+    .fi-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
     .fi-icon {
-      width: 38px; height: 38px; flex-shrink: 0;
-      background: var(--bg2); border: 1px solid var(--border2);
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 18px;
     }
-    .fi-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
-    .fi-meta { font-size: 11px; font-weight: 300; color: var(--faint); }
+
+    .fi-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .fi-meta {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--faint);
+    }
 
     .dl-btn {
-      display: inline-flex; align-items: center; gap: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 9px 16px;
-      background: var(--green); color: #000;
+      background: var(--green);
+      color: #000;
       font-family: var(--sans);
-      font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
-      text-transform: uppercase; border-radius: 6px;
-      text-decoration: none; white-space: nowrap; flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
       transition: opacity 0.15s, box-shadow 0.2s;
-      box-shadow: 0 0 16px rgba(0,230,118,0.18);
+      box-shadow: 0 0 16px rgba(0, 230, 118, 0.18);
     }
+
     .dl-btn:hover {
       opacity: 0.88;
-      box-shadow: 0 0 24px rgba(0,230,118,0.32);
+      box-shadow: 0 0 24px rgba(0, 230, 118, 0.32);
     }
 
     /* ── NEXT STEPS ── */
     .next-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px; padding: 26px 28px;
+      border-radius: 14px;
+      padding: 26px 28px;
       margin-bottom: 36px;
     }
+
     .next-kicker {
-      font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--faint); margin-bottom: 18px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 18px;
     }
-    .steps { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
     .steps li {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.55;
     }
+
     .snum {
-      width: 22px; height: 22px; flex-shrink: 0;
-      background: var(--bg2); border: 1px solid var(--border2);
-      border-radius: 50%; font-size: 10px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--green); margin-top: 1px;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      margin-top: 1px;
     }
 
     /* ── FOOTER ── */
-    .foot { text-align: center; }
+    .foot {
+      text-align: center;
+    }
+
     .ty {
-      font-size: 22px; font-weight: 900;
-      letter-spacing: -0.02em; color: var(--green); margin-bottom: 10px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--green);
+      margin-bottom: 10px;
     }
+
     .sup {
-      font-size: 12px; font-weight: 300;
-      color: var(--faint); line-height: 1.7;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--faint);
+      line-height: 1.7;
     }
-    .sup a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
-    .sup a:hover { color: var(--ink); }
+
+    .sup a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .sup a:hover {
+      color: var(--ink);
+    }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 520px) {
-      .file-item { flex-direction: column; align-items: flex-start; }
-      .dl-btn { width: 100%; justify-content: center; }
-      .dl-head, .file-item, .next-card { padding-left: 20px; padding-right: 20px; }
+      .file-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .dl-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .dl-head,
+      .file-item,
+      .next-card {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
   </style>
 
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      }; if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+    }(window,
+      document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', 'YOUR_PIXEL_ID');
     fbq('track', 'PageView');
-    </script>
+  </script>
 </head>
+
 <body>
-<div class="top-glow"></div>
+  <div class="top-glow"></div>
 
-<div class="wrap">
+  <div class="wrap">
 
-  <!-- SUCCESS BADGE -->
-  <div class="success-badge">
-    <div class="badge-check">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-        <path d="M2.5 6l2.5 2.5L9.5 4" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- SUCCESS BADGE -->
+    <div class="success-badge">
+      <div class="badge-check">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2.5 6l2.5 2.5L9.5 4" stroke="#000" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="badge-text">
+        Payment confirmed — your order is complete
+        <span>You now have full access to the workflow</span>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <p class="page-kicker">LinkedIn AI Autopilot</p>
+    <h1>Your files are<br>ready. <span class="g">Download now.</span></h1>
+    <p class="greeting" id="greeting">Here's everything included in your purchase.</p>
+    <div class="email-note">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,12 2,6" />
       </svg>
+      We've also emailed these links to <b id="email-display">your email address</b> — check your inbox (and spam).
     </div>
-    <div class="badge-text">
-      Payment confirmed — your order is complete
-      <span>You now have full access to the workflow</span>
-    </div>
-  </div>
 
-  <!-- HEADER -->
-  <p class="page-kicker">LinkedIn AI Autopilot</p>
-  <h1>Your files are<br>ready. <span class="g">Download now.</span></h1>
-  <p class="greeting" id="greeting">Here's everything included in your purchase.</p>
-  <div class="email-note">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-      <polyline points="22,6 12,12 2,6"/>
-    </svg>
-    We've also emailed these links to <b id="email-display">your email address</b> — check your inbox (and spam).
-  </div>
+    <!-- DOWNLOADS -->
+    <div class="dl-card">
+      <div class="dl-head">
+        <h2>LinkedIn AI Autopilot — All Files</h2>
+        <p>2 files included in your purchase</p>
+      </div>
+      <ul class="file-list">
 
-  <!-- DOWNLOADS -->
-  <div class="dl-card">
-    <div class="dl-head">
-      <h2>LinkedIn AI Autopilot — All Files</h2>
-      <p>2 files included in your purchase</p>
-    </div>
-    <ul class="file-list">
-
-      <!-- FILE 1 — replace href -->
-      <li class="file-item">
-        <div class="fi-info">
-          <div class="fi-icon">⚙️</div>
-          <div>
-            <p class="fi-name">n8n Workflow File</p>
-            <p class="fi-meta">.json · Import directly into n8n</p>
+        <!-- FILE 1 — replace href -->
+        <li class="file-item">
+          <div class="fi-info">
+            <div class="fi-icon">⚙️</div>
+            <div>
+              <p class="fi-name">n8n Workflow File</p>
+              <p class="fi-meta">.json · Import directly into n8n</p>
+            </div>
           </div>
-        </div>
-        <a class="dl-btn" href="https://drive.google.com/uc?export=download&id=1kk2Z5-SpE48t9rqzp_dH4nwkvrdk4K8Q" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          Download
-        </a>
-      </li>
+          <a class="dl-btn" href="https://drive.google.com/uc?export=download&id=1kk2Z5-SpE48t9rqzp_dH4nwkvrdk4K8Q"
+            target="_blank" rel="noopener">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download
+          </a>
+        </li>
 
-      <!-- FILE 2 — replace href -->
-      <li class="file-item">
-        <div class="fi-info">
-          <div class="fi-icon">📄</div>
-          <div>
-            <p class="fi-name">Setup Guide</p>
-            <p class="fi-meta">.pdf · Step-by-step setup instructions</p>
+        <!-- FILE 2 — replace href -->
+        <li class="file-item">
+          <div class="fi-info">
+            <div class="fi-icon">📄</div>
+            <div>
+              <p class="fi-name">Setup Guide</p>
+              <p class="fi-meta">.pdf · Step-by-step setup instructions</p>
+            </div>
           </div>
-        </div>
-        <a class="dl-btn" href="https://drive.google.com/uc?export=download&id=1WuoYKKTHkZLJvI5G-Bih8uXZOFiKsqKC" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          Download
-        </a>
-      </li>
+          <a class="dl-btn" href="https://drive.google.com/uc?export=download&id=1WuoYKKTHkZLJvI5G-Bih8uXZOFiKsqKC"
+            target="_blank" rel="noopener">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download
+          </a>
+        </li>
 
-      <!-- FILE 3 — replace href -->
-      <!-- <li class="file-item">
+        <!-- FILE 3 — replace href -->
+        <!-- <li class="file-item">
         <div class="fi-info">
           <div class="fi-icon">💬</div>
           <div>
@@ -312,79 +506,80 @@
         </a>
       </li> -->
 
-    </ul>
+      </ul>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="next-card">
+      <p class="next-kicker">Getting started</p>
+      <ul class="steps">
+        <li><span class="snum">1</span> Download all three files above</li>
+        <li><span class="snum">2</span> Read the Setup Guide PDF first — it walks you through every step</li>
+        <li><span class="snum">3</span> Import the workflow JSON into your n8n instance</li>
+        <li><span class="snum">4</span> Add your API keys as described in the guide, run your first test</li>
+        <li><span class="snum">5</span> Sit back. Watch the impressions come in.</li>
+      </ul>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="foot">
+      <p class="ty">Welcome to autopilot. 🚀</p>
+      <p class="sup">
+        Need help with setup? We've got you.<br>
+        <a href="mailto:instantai.in@gmail.com">instantai.in@gmail.com</a> — we reply fast.
+      </p>
+    </div>
+
   </div>
 
-  <!-- NEXT STEPS -->
-  <div class="next-card">
-    <p class="next-kicker">Getting started</p>
-    <ul class="steps">
-      <li><span class="snum">1</span> Download all three files above</li>
-      <li><span class="snum">2</span> Read the Setup Guide PDF first — it walks you through every step</li>
-      <li><span class="snum">3</span> Import the workflow JSON into your n8n instance</li>
-      <li><span class="snum">4</span> Add your API keys as described in the guide, run your first test</li>
-      <li><span class="snum">5</span> Sit back. Watch the impressions come in.</li>
-    </ul>
-  </div>
+  <script>
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby81P40MZYAByFWiTF5fiiFmLNzUz9P1FHIaWdMqSImnHaazj7G2FzEocjrKwHzDZOV/exec';
 
-  <!-- FOOTER -->
-  <div class="foot">
-    <p class="ty">Welcome to autopilot. 🚀</p>
-    <p class="sup">
-      Need help with setup? We've got you.<br>
-      <a href="mailto:instantai.in@gmail.com">instantai.in@gmail.com</a> — we reply fast.
-    </p>
-  </div>
+    const urlParams = new URLSearchParams(window.location.search);
+    const rzpStatus = urlParams.get('razorpay_payment_link_status');
+    const rzpPayId = urlParams.get('razorpay_payment_id');
+    const buyerEmail = localStorage.getItem('buyerEmail') || '';
+    const buyerName = localStorage.getItem('buyerName') || '';
 
-</div>
-
-<script>
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby81P40MZYAByFWiTF5fiiFmLNzUz9P1FHIaWdMqSImnHaazj7G2FzEocjrKwHzDZOV/exec';
-
-  const urlParams  = new URLSearchParams(window.location.search);
-  const rzpStatus  = urlParams.get('razorpay_payment_link_status');
-  const rzpPayId   = urlParams.get('razorpay_payment_id');
-  const buyerEmail = localStorage.getItem('buyerEmail') || '';
-  const buyerName  = localStorage.getItem('buyerName')  || '';
-
-  // Personalise
-  if (buyerName) {
-    document.getElementById('greeting').textContent =
-      `Here's everything included in your purchase, ${buyerName.split(' ')[0]}.`;
-  }
-  if (buyerEmail) {
-    document.getElementById('email-display').textContent = buyerEmail;
-  }
-
-  // Update sheet status
-  async function updateStatus() {
-    if (!buyerEmail) return;
-    try {
-      await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({
-          action:    'updateStatus',
-          email:     buyerEmail,
-          paymentId: rzpPayId  || '',
-          status:    rzpStatus || 'paid'
-        })
-      });
-    } catch(e) {
-      console.warn('Status update failed:', e);
+    // Personalise
+    if (buyerName) {
+      document.getElementById('greeting').textContent =
+        `Here's everything included in your purchase, ${buyerName.split(' ')[0]}.`;
     }
-  }
+    if (buyerEmail) {
+      document.getElementById('email-display').textContent = buyerEmail;
+    }
 
-  updateStatus();
+    // Update sheet status
+    async function updateStatus() {
+      if (!buyerEmail) return;
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            action: 'updateStatus',
+            email: buyerEmail,
+            paymentId: rzpPayId || '',
+            status: rzpStatus || 'paid'
+          })
+        });
+      } catch (e) {
+        console.warn('Status update failed:', e);
+      }
+    }
+
+    updateStatus();
 
     if (typeof fbq !== 'undefined') {
-     fbq('track', 'Lead', { value: 49, currency: 'INR' });
-    }  
+      fbq('track', 'Lead', { value: 49, currency: 'INR' });
+    }
 
-  // Clean localStorage after 5s
-  setTimeout(() => {
-    localStorage.removeItem('buyerEmail');
-    localStorage.removeItem('buyerName');
-  }, 5000);
-</script>
+    // Clean localStorage after 5s
+    setTimeout(() => {
+      localStorage.removeItem('buyerEmail');
+      localStorage.removeItem('buyerName');
+    }, 5000);
+  </script>
 </body>
+
 </html>
