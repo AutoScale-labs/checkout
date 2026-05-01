@@ -783,8 +783,8 @@
 
   <!-- Vercel Web Analytics -->
   <script>
-    window.va = window.va || function () { 
-      (window.vaq = window.vaq || []).push(arguments); 
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -1021,7 +1021,7 @@
     });
 
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby81P40MZYAByFWiTF5fiiFmLNzUz9P1FHIaWdMqSImnHaazj7G2FzEocjrKwHzDZOV/exec';
-    const RAZORPAY_BASE = 'https://rzp.io/rzp/gXh5w91';
+    const RAZORPAY_BASE = 'https://pages.razorpay.com/pl_Sk5jekvLPcIwJq/view';
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     function getUTM() {
@@ -1087,9 +1087,9 @@
       }
 
       const params = new URLSearchParams({
-        'prefill[name]': fd.name,
-        'prefill[email]': fd.email,
-        'prefill[contact]': fd.phone
+        name: fd.name,
+        email: fd.email,
+        phone: fd.phone
       });
       window.location.href = `${RAZORPAY_BASE}?${params.toString()}`;
     });
