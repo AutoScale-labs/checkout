@@ -541,12 +541,21 @@
   </div>
 
   <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('ref');
+    const buyerEmail = localStorage.getItem('buyerEmail');
+
+    if (!buyerEmail || !token || token !== 'x9mK2pQ7nL4') {
+      let errReason = 'unauthorized';
+      if (!buyerEmail) errReason = 'missing_email';
+      else if (!token || token !== 'x9mK2pQ7nL4') errReason = 'invalid_token';
+      window.location.href = `/?error=${errReason}`;
+    }
+
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby81P40MZYAByFWiTF5fiiFmLNzUz9P1FHIaWdMqSImnHaazj7G2FzEocjrKwHzDZOV/exec';
 
-    const urlParams = new URLSearchParams(window.location.search);
     const rzpStatus = urlParams.get('razorpay_payment_link_status');
     const rzpPayId = urlParams.get('razorpay_payment_id');
-    const buyerEmail = localStorage.getItem('buyerEmail') || '';
     const buyerName = localStorage.getItem('buyerName') || '';
 
     // Personalise

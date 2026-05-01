@@ -1096,6 +1096,128 @@
 
     // Formatting is handled by intl-tel-input
   </script>
-</body>
 
+  <!-- ERROR MODAL -->
+  <div id="error-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-icon">⚠️</div>
+      <h3 class="modal-title">Access Error</h3>
+      <p class="modal-desc" id="error-modal-desc"></p>
+      <div class="modal-sup">
+        Please contact support to resolve this issue:<br>
+        <a href="mailto:autoscale.support@gmail.com">autoscale.support@gmail.com</a>
+      </div>
+      <button class="modal-close" onclick="closeErrorModal()">Close</button>
+    </div>
+  </div>
+  <style>
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-content {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 16px;
+      padding: 32px 40px;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 80px rgba(255, 82, 82, 0.1);
+    }
+    .modal-overlay.show .modal-content {
+      transform: translateY(0) scale(1);
+    }
+    .modal-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #FF5252;
+    }
+    .modal-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .modal-sup {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--bg2);
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .modal-sup a {
+      color: var(--green);
+      font-weight: 600;
+      text-decoration: none;
+      display: block;
+      margin-top: 6px;
+    }
+    .modal-close {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border2);
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .modal-close:hover {
+      background: var(--bg2);
+      border-color: var(--muted);
+    }
+  </style>
+  <script>
+    function closeErrorModal() {
+      document.getElementById('error-modal').classList.remove('show');
+      const url = new URL(window.location);
+      url.searchParams.delete('error');
+      window.history.replaceState({}, '', url);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const errorParam = new URLSearchParams(window.location.search).get('error');
+      if (errorParam) {
+        const descEl = document.getElementById('error-modal-desc');
+        if (errorParam === 'missing_email') {
+          descEl.textContent = "We couldn't verify your session details (Missing Email). Your session may have expired.";
+        } else if (errorParam === 'invalid_token') {
+          descEl.textContent = "Your access token is invalid or missing. You are not authorized to view the requested page.";
+        } else {
+          descEl.textContent = "An unauthorized access attempt was detected.";
+        }
+        setTimeout(() => {
+          document.getElementById('error-modal').classList.add('show');
+        }, 100);
+      }
+    });
+  </script>
+</body>
 </html>
