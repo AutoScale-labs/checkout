@@ -748,9 +748,11 @@
       t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
     }(window,
       document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('init', '938855545640396');
     fbq('track', 'PageView');
   </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=938855545640396&ev=PageView&noscript=1" /></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
   <style>
     .iti {
@@ -1124,10 +1126,12 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
+
     .modal-overlay.show {
       opacity: 1;
       pointer-events: auto;
     }
+
     .modal-content {
       background: var(--surface);
       border: 1px solid var(--border2);
@@ -1138,15 +1142,18 @@
       text-align: center;
       transform: translateY(20px) scale(0.95);
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 80px rgba(255, 82, 82, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(255, 82, 82, 0.1);
     }
+
     .modal-overlay.show .modal-content {
       transform: translateY(0) scale(1);
     }
+
     .modal-icon {
       font-size: 48px;
       margin-bottom: 16px;
     }
+
     .modal-title {
       font-size: 22px;
       font-weight: 800;
@@ -1154,6 +1161,7 @@
       margin-bottom: 12px;
       color: #FF5252;
     }
+
     .modal-desc {
       font-size: 14px;
       font-weight: 300;
@@ -1161,6 +1169,7 @@
       line-height: 1.6;
       margin-bottom: 20px;
     }
+
     .modal-sup {
       font-size: 13px;
       font-weight: 400;
@@ -1171,6 +1180,7 @@
       border: 1px solid var(--border);
       margin-bottom: 24px;
     }
+
     .modal-sup a {
       color: var(--green);
       font-weight: 600;
@@ -1178,6 +1188,7 @@
       display: block;
       margin-top: 6px;
     }
+
     .modal-close {
       background: transparent;
       color: var(--ink);
@@ -1189,6 +1200,7 @@
       cursor: pointer;
       transition: background 0.2s, border-color 0.2s;
     }
+
     .modal-close:hover {
       background: var(--bg2);
       border-color: var(--muted);
@@ -1220,4 +1232,5 @@
     });
   </script>
 </body>
+
 </html>
