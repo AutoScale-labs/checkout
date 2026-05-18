@@ -1119,7 +1119,7 @@
       background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(5px);
       z-index: 9999;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       opacity: 0;
@@ -1208,7 +1208,14 @@
   </style>
   <script>
     function closeErrorModal() {
-      document.getElementById('error-modal').classList.remove('show');
+      const modal = document.getElementById('error-modal');
+      modal.classList.remove('show');
+      
+      // Wait for opacity transition to finish before hiding display
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+
       const url = new URL(window.location);
       url.searchParams.delete('error');
       window.history.replaceState({}, '', url);
@@ -1225,8 +1232,12 @@
         } else {
           descEl.textContent = "An unauthorized access attempt was detected.";
         }
+        
+        const modal = document.getElementById('error-modal');
+        modal.style.display = 'flex';
+        
         setTimeout(() => {
-          document.getElementById('error-modal').classList.add('show');
+          modal.classList.add('show');
         }, 100);
       }
     });
