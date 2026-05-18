@@ -73,6 +73,21 @@
       z-index: 0;
     }
 
+    /* ── ANNOUNCEMENT BAR ── */
+    .announcement-bar {
+      position: relative;
+      z-index: 20;
+      width: 100%;
+      background: var(--green);
+      color: #000;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      padding: 14px 24px;
+      border-bottom: 1px solid rgba(0, 230, 118, 0.18);
+      letter-spacing: 0.02em;
+    }
+
     /* ── NAV ── */
     nav {
       position: relative;
@@ -274,6 +289,60 @@
       border-radius: 5px;
     }
 
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 48px 88px;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .testi-card {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 14px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .testi-card:hover {
+      border-color: rgba(0, 230, 118, 0.3);
+      box-shadow: 0 0 32px rgba(0, 230, 118, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .testi-quote {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .testi-attr {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .testi-attr span {
+      display: block;
+      font-weight: 300;
+      color: var(--faint);
+      margin-top: 2px;
+    }
+
     /* ── DIVIDER ── */
     hr {
       border: none;
@@ -410,6 +479,66 @@
       font-weight: 300;
       color: var(--faint);
       line-height: 1.6;
+    }
+
+    /* ── FAQ ── */
+    .faq {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 48px 88px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--sans);
+    }
+
+    .faq-icon {
+      font-size: 20px;
+      color: var(--green);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 16px;
+      font-weight: 400;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-a-inner {
+      padding-bottom: 24px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
     }
 
     /* ── CHECKOUT ── */
@@ -641,6 +770,80 @@
       color: var(--ink);
     }
 
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 12px;
+      margin-bottom: 8px;
+    }
+
+    .tb {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--faint);
+    }
+
+    .tb-ico {
+      font-size: 13px;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      padding: 48px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-logo {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .footer-logo b {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--faint);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--ink);
+    }
+
     /* ── ANIM ── */
     @keyframes fadeUp {
       from {
@@ -709,6 +912,14 @@
         grid-template-columns: 1fr;
       }
 
+      .testimonials {
+        padding: 0 20px 64px;
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr;
+      }
+
       .how {
         padding: 64px 20px;
       }
@@ -723,6 +934,10 @@
 
       .inc-grid {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .faq {
+        padding: 0 20px 64px;
       }
 
       .checkout {
@@ -795,6 +1010,11 @@
 <body>
   <div class="top-glow"></div>
 
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    🚀 Launch price: ₹49 — goes up to ₹149 once we hit 100 sales. 96 sold so far.
+  </div>
+
   <!-- NAV -->
   <nav>
     <span class="nav-logo">LinkedIn <b>AI</b> Autopilot</span>
@@ -865,6 +1085,27 @@
 
   <hr />
 
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2 class="sec-title" style="text-align: center; margin-bottom: 40px;">What early buyers are saying.</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-quote">"Set this up on a Sunday afternoon. By Monday it had already drafted and queued 7 posts. I haven't touched LinkedIn manually since. Insane value for ₹49."</p>
+        <p class="testi-attr">Rohan M.<br><span>Founder, SaaS startup</span></p>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"I was skeptical — I've tried AI writing tools before and they all sound robotic. This one actually learned my tone. My audience has no idea. Impressions up 3x in the first week."</p>
+        <p class="testi-attr">Priya S.<br><span>Marketing Consultant</span></p>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"The setup guide is genuinely beginner-friendly. I'm not technical at all and I had it running in under an hour. The n8n walkthrough is clear and the support team replied within a day."</p>
+        <p class="testi-attr">Aman K.<br><span>Personal Brand Coach</span></p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
   <!-- CHECKOUT -->
   <section class="checkout" id="checkout" style="padding-top:80px;">
     <div class="checkout-card">
@@ -911,6 +1152,12 @@
             <path d="M7 11V7a5 5 0 0 1 10 0v4" />
           </svg>
           Secured by Razorpay · 256-bit SSL
+        </div>
+        
+        <div class="trust-badges">
+          <div class="tb"><span class="tb-ico">🛡️</span>Secured by Razorpay</div>
+          <div class="tb"><span class="tb-ico">🔧</span>Can't set it up? We will</div>
+          <div class="tb"><span class="tb-ico">🔒</span>Instant download + delivery to your inbox</div>
         </div>
         <div class="sup-line">
           Questions? <a href="mailto:autoscale.support@gmail.com">autoscale.support@gmail.com</a>
@@ -1012,6 +1259,52 @@
       </div>
     </div>
   </section>
+
+  <hr />
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="sec-title" style="text-align: center; margin-bottom: 40px;">Questions we get asked a lot.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Do I need to know how to code?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. The setup guide walks you through every step with screenshots. If you can follow instructions and copy-paste, you can set this up. Most people are running within an hour.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What tools do I need to run this?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">You need an n8n account (free to self-host, or ~$20/month on n8n Cloud), an OpenAI API key, and optionally an image generation API (like DALL·E or Stability AI). The API Setup Walkthrough inside tells you exactly where to get each one.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will LinkedIn detect or penalize me for this?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">The workflow posts through LinkedIn's standard scheduling — the same way any social media scheduler works. It does not use bots, fake engagement, or anything that violates LinkedIn's terms. You're posting real, original content on a schedule. Thousands of creators do this.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does it really sound like me and not like AI?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — if you set it up correctly. You give it your writing style, your tone, your audience, and examples of your best posts. The prompts are specifically designed to replicate a human voice. We recommend reviewing posts before they go live until you've tuned it to your liking.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long does setup take?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Most people finish in 45–90 minutes following the step-by-step guide. If you get stuck, email us and we'll help you through it.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if I get stuck and can't set it up?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Email us at autoscale.support@gmail.com. If you genuinely can't get it running after following the guide, we'll set it up for you at no extra charge. We want you growing on LinkedIn — not stuck on config.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What does "lifetime access" actually mean?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">You pay once and own the workflow forever. When we improve it — better prompts, new features, updated steps — you get the new version free. No subscriptions, no renewals.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p class="footer-logo">LinkedIn <b>AI</b> Autopilot</p>
+    <p class="footer-copy">© 2026 AutoScale. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="mailto:autoscale.support@gmail.com">Contact Support</a>
+    </div>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
   <script>
@@ -1240,6 +1533,25 @@
           modal.classList.add('show');
         }, 100);
       }
+      
+      // FAQ Accordion
+      document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.parentElement;
+          const answer = item.querySelector('.faq-a');
+          const isActive = item.classList.contains('active');
+          
+          document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.faq-a').style.maxHeight = null;
+          });
+
+          if (!isActive) {
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
     });
   </script>
 </body>
